@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinFormsEffects"
+             xmlns:localEffects="clr-namespace:XamarinFormsEffects.Models"
+             xmlns:VM="clr-namespace:XamarinFormsEffects.ViewModels"
+             x:Class="XamarinFormsEffects.MainPage" x:Name="MyPage" >
+    <ContentPage.BindingContext>
+        <VM:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Label Text="HI" x:Name="myentry" localEffects:LongPressEffect.Command="{Binding touchit}" localEffects:LongPressEffect.CommandParameter="{Binding Source={x:Reference myentry}}">
+            <Label.Effects>
+                <localEffects:LongPressEffect/>
+            </Label.Effects>
+        </Label>
+        <ListView ItemsSource="{Binding dd}"  >            
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell localEffects:LongPressEffect.Command="{Binding Path=BindingContext.touchit, Source={x:Reference MyPage}}" localEffects:LongPressEffect.CommandParameter="{Binding .}">
+                        <ViewCell.Effects>
+                            <localEffects:LongPressEffect/>
+                        </ViewCell.Effects>
+                        <StackLayout x:Name="mystack" >
+
+                            <Label Text="{Binding Name}" />
+
+
+                            <Label Text="{Binding Age}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- Place new controls here -->
+        <!--<Label Text="Welcome to Xamarin.Forms!"  
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand"  >
+            <Label.Effects>
+                <localEffects:BorderEffect/>
+                
+            </Label.Effects>
+        </Label>
+        <Entry localEffects:BorderEffect.Command="{Binding touchit}">
+            <Entry.Effects>
+                <localEffects:BorderEffect/>
+            </Entry.Effects>
+        </Entry>-->
+    </StackLayout>
+
+</ContentPage>
