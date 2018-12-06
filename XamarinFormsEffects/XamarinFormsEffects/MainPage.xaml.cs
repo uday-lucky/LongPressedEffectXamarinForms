@@ -13,5 +13,10 @@ namespace XamarinFormsEffects
         {
             InitializeComponent();
         }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            (sender as ListView).SelectedItem = null;
+        }
     }
 }

@@ -20,17 +20,29 @@ namespace XamarinFormsEffects.Droid.PlatForm
 {
     public class LongPressAndroid_Effect : PlatformEffect
     {
+        private bool _attached;
+        public static void Initialize() { }
         protected override void OnAttached()
         {
-            
-
+            if (!_attached)
+            {
+                if (Control!=null)
+                {
+                    Control.LongClickable = true;
+                    // Control.SetBackgroundColor(Android.Graphics.Color.Red);
+                    Control.LongClick += Control_LongClick;
+                }
+                else
+                {
+                    Container.LongClickable = true;
+                    Container.LongClick += Control_LongClick;
+                }
                 // Control.SetBackgroundColor(Android.Graphics.Color.Blue);
 
-                // Control.SetBackgroundColor(Android.Graphics.Color.Red);
-                Control.LongClick += Control_LongClick;
-                Control.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Red);
-           // }
 
+                // }
+            }
+          
         }
 
         private void Control_LongClick(object sender, Android.Views.View.LongClickEventArgs e)
@@ -44,8 +56,20 @@ namespace XamarinFormsEffects.Droid.PlatForm
 
         protected override void OnDetached()
         {
-           // Control.SetBackgroundColor(Android.Graphics.Color.White);
-            //  Control.SetBackgroundColor(Android.Graphics.Color.Black);
+            if (_attached)
+            {
+                if (Control != null)
+                {
+                    Control.LongClickable = true;
+                    Control.LongClick -= Control_LongClick;
+                }
+                else
+                {
+                    Container.LongClickable = true;
+                    Container.LongClick -= Control_LongClick;
+                }
+                _attached = false;
+            }
         }
     }
 }
