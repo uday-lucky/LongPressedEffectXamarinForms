@@ -4,31 +4,31 @@
              xmlns:local="clr-namespace:XamarinFormsEffects"
              xmlns:localEffects="clr-namespace:XamarinFormsEffects.Models"
              xmlns:VM="clr-namespace:XamarinFormsEffects.ViewModels"
-             x:Class="XamarinFormsEffects.MainPage" x:Name="MyPage" >
+             x:Class="XamarinFormsEffects.MainPage" x:Name="MyPage" Title="LongPressListview" >
     <ContentPage.BindingContext>
         <VM:MainPageViewModel />
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <Label Text="HI" x:Name="myentry" localEffects:LongPressEffect.Command="{Binding touchit}" localEffects:LongPressEffect.CommandParameter="{Binding Source={x:Reference myentry}}">
+        <Label Text="HI" x:Name="myentry" Margin="10,0,0,0" FontSize="Medium" FontAttributes="Bold" localEffects:LongPressEffect.Command="{Binding touchit}" localEffects:LongPressEffect.CommandParameter="{Binding Source={x:Reference myentry}}">
             <Label.Effects>
                 <localEffects:LongPressEffect/>
             </Label.Effects>
         </Label>
-        <ListView ItemsSource="{Binding dd}" x:Name="mylst" ItemSelected="ListView_ItemSelected" >            
+        <ListView ItemsSource="{Binding dd}" x:Name="mylst" ItemSelected="ListView_ItemSelected" HasUnevenRows="True" >            
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <ViewCell >
 
-                        <StackLayout  localEffects:LongPressEffect.Command="{Binding Path=BindingContext.touchit,Source={x:Reference MyPage}}" localEffects:LongPressEffect.CommandParameter="{Binding .}">
+                        <StackLayout  Margin="10,0,10,0" localEffects:LongPressEffect.Command="{Binding Path=BindingContext.touchit,Source={x:Reference MyPage}}" localEffects:LongPressEffect.CommandParameter="{Binding .}">
                             <StackLayout.Effects>
                                 <localEffects:LongPressEffect/> 
                             </StackLayout.Effects>
 
-                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Red" FontSize="Medium" />
 
 
-                            <Label Text="{Binding Age}"/>
+                            <Label Text="{Binding Age}"  FontAttributes="Bold" TextColor="Green" FontSize="Medium"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
