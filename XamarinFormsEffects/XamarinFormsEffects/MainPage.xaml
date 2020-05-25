@@ -1,46 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XamarinFormsEffects"
-             xmlns:localEffects="clr-namespace:XamarinFormsEffects.Models"
-             xmlns:VM="clr-namespace:XamarinFormsEffects.ViewModels"
-             x:Class="XamarinFormsEffects.MainPage" x:Name="MyPage" Title="LongPressListview" >
+<ContentPage
+    x:Class="XamarinFormsEffects.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:VM="clr-namespace:XamarinFormsEffects.ViewModels"
+    xmlns:local="clr-namespace:XamarinFormsEffects"
+    xmlns:localEffects="clr-namespace:XamarinFormsEffects.Models"
+    x:Name="MyPage"
+    Title="LongPressListview">
     <ContentPage.BindingContext>
         <VM:MainPageViewModel />
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <Label Text="HI" x:Name="myentry" Margin="10,0,0,0" FontSize="Medium" FontAttributes="Bold" localEffects:LongPressEffect.Command="{Binding touchit}" localEffects:LongPressEffect.CommandParameter="{Binding Source={x:Reference myentry}}">
+        <Label
+            x:Name="myentry"
+            Margin="10,0,0,0"
+            localEffects:LongPressEffect.Command="{Binding touchit}"
+            localEffects:LongPressEffect.CommandParameter="{Binding Source={x:Reference myentry}}"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="HI">
             <Label.Effects>
-                <localEffects:LongPressEffect/>
+                <localEffects:LongPressEffect />
             </Label.Effects>
         </Label>
-        <ListView ItemsSource="{Binding dd}" x:Name="mylst" ItemSelected="ListView_ItemSelected" HasUnevenRows="True" >            
-            <ListView.ItemTemplate>
-                <DataTemplate >
-                    <ViewCell >
-
-                        <StackLayout  Margin="10,0,10,0" localEffects:LongPressEffect.Command="{Binding Path=BindingContext.touchit,Source={x:Reference MyPage}}" localEffects:LongPressEffect.CommandParameter="{Binding .}">
-                            <StackLayout.Effects>
-                                <localEffects:LongPressEffect/> 
-                            </StackLayout.Effects>
-
-                            <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Red" FontSize="Medium" />
+        <CollectionView x:Name="mylst" ItemsSource="{Binding dd}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
 
 
-                            <Label Text="{Binding Age}"  FontAttributes="Bold" TextColor="Green" FontSize="Medium"/>
-                        </StackLayout>
-                    </ViewCell>
+                    <StackLayout
+                        Margin="10,0,10,0"
+                        localEffects:LongPressEffect.Command="{Binding Path=BindingContext.touchit, Source={x:Reference MyPage}}"
+                        localEffects:LongPressEffect.CommandParameter="{Binding .}">
+                        <StackLayout.Effects>
+                            <localEffects:LongPressEffect />
+                        </StackLayout.Effects>
+
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{Binding Name}"
+                            TextColor="Red" />
+
+
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{Binding Age}"
+                            TextColor="Green" />
+                    </StackLayout>
+
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <!-- Place new controls here -->
-        <!--<Label Text="Welcome to Xamarin.Forms!"  
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--  Place new controls here  -->
+        <!--<Label Text="Welcome to Xamarin.Forms!"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand"  >
             <Label.Effects>
                 <localEffects:BorderEffect/>
-                
+
             </Label.Effects>
         </Label>
         <Entry localEffects:BorderEffect.Command="{Binding touchit}">

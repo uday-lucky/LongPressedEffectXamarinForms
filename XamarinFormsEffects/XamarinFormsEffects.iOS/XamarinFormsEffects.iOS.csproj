@@ -149,12 +149,12 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\XamarinFormsEffects\XamarinFormsEffects.csproj">
-      <Project>{196BE838-70A4-448F-B2C6-4E76799C5981}</Project>
+      <Project>{180D08DE-72DE-40F9-A981-D16CBC43CFB5}</Project>
       <Name>XamarinFormsEffects</Name>
     </ProjectReference>
   </ItemGroup>

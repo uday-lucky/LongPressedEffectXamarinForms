@@ -45,8 +45,11 @@ namespace XamarinFormsEffects.iOS.Platform
         /// </summary>
         private void HandleLongClick()
         {
-            var command = LongPressEffect.GetCommand(Element);
-            command?.Execute(LongPressEffect.GetCommandParameter(Element));
+            if (_longPressRecognizer.State == UIGestureRecognizerState.Began)
+            {
+                var command = LongPressEffect.GetCommand(Element);
+                command?.Execute(LongPressEffect.GetCommandParameter(Element));
+            }
         }
 
         /// <summary>
