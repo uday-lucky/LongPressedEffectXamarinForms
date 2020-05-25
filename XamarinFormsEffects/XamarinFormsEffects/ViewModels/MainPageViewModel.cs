@@ -17,12 +17,42 @@ namespace XamarinFormsEffects.ViewModels
             dd = new ObservableCollection<MainModel>();
             dd.Add(new MainModel {Age="21",Name="Uday" });
             dd.Add(new MainModel { Age = "21", Name = "Adam" });
-            touchit = new Command(longpressit);
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            dd.Add(new MainModel { Age = "21", Name = "Uday" });
+            dd.Add(new MainModel { Age = "21", Name = "Adam" });
+            touchit = new Command<MainModel>(longpressit);
         }
 
-        public void longpressit(object obj)
+        public void longpressit(MainModel obj)
         {
-            App.Current.MainPage.DisplayAlert("Alert","Long press clicked","OK");
+            App.Current.MainPage.DisplayAlert("Alert",obj.Name.ToString(),"OK");
         }
     }
 }

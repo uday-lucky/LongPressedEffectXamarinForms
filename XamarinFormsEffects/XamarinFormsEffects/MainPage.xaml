@@ -12,63 +12,42 @@
         <VM:MainPageViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout>
-        <Label
-            x:Name="myentry"
-            Margin="10,0,0,0"
-            localEffects:LongPressEffect.Command="{Binding touchit}"
-            localEffects:LongPressEffect.CommandParameter="{Binding Source={x:Reference myentry}}"
-            FontAttributes="Bold"
-            FontSize="Medium"
-            Text="HI">
-            <Label.Effects>
-                <localEffects:LongPressEffect />
-            </Label.Effects>
-        </Label>
-        <CollectionView x:Name="mylst" ItemsSource="{Binding dd}">
-            <CollectionView.ItemTemplate>
+    <ScrollView>
+
+
+        <FlexLayout
+            AlignContent="Start"
+            AlignItems="Center"
+            BindableLayout.ItemsSource="{Binding dd}"
+            Direction="Row"
+            JustifyContent="SpaceBetween"
+            Wrap="Wrap">
+
+
+            <BindableLayout.ItemTemplate>
                 <DataTemplate>
-
-
                     <StackLayout
-                        Margin="10,0,10,0"
+                        Margin="0,10,0,10"
+                        Padding="15,0,15,0"
                         localEffects:LongPressEffect.Command="{Binding Path=BindingContext.touchit, Source={x:Reference MyPage}}"
-                        localEffects:LongPressEffect.CommandParameter="{Binding .}">
+                        localEffects:LongPressEffect.CommandParameter="{Binding .}"
+                        BackgroundColor="Blue"
+                        HeightRequest="100"
+                        Orientation="Horizontal"
+                        WidthRequest="100">
                         <StackLayout.Effects>
                             <localEffects:LongPressEffect />
                         </StackLayout.Effects>
-
                         <Label
-                            FontAttributes="Bold"
-                            FontSize="Medium"
+                            HorizontalOptions="Start"
                             Text="{Binding Name}"
-                            TextColor="Red" />
+                            TextColor="White"
+                            VerticalTextAlignment="Center" />
 
-
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="Medium"
-                            Text="{Binding Age}"
-                            TextColor="Green" />
                     </StackLayout>
-
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <!--  Place new controls here  -->
-        <!--<Label Text="Welcome to Xamarin.Forms!"
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"  >
-            <Label.Effects>
-                <localEffects:BorderEffect/>
-
-            </Label.Effects>
-        </Label>
-        <Entry localEffects:BorderEffect.Command="{Binding touchit}">
-            <Entry.Effects>
-                <localEffects:BorderEffect/>
-            </Entry.Effects>
-        </Entry>-->
-    </StackLayout>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+    </ScrollView>
 
 </ContentPage>
